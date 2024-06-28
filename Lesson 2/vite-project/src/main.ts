@@ -1,4 +1,4 @@
-import "./style.css";
+import './style.css';
 
 // let name = "John";
 // A) let name: string = 'John';
@@ -69,6 +69,7 @@ import "./style.css";
 //   fish = 'fish',
 // }
 
+// Одна типизация трех объектов
 // type Animal = {
 //   [AnimalIds.cat]: {
 //     meow: () => string;
@@ -81,6 +82,7 @@ import "./style.css";
 //   };
 // };
 
+// Выполнение, интерпретация кода, под капотом
 // // type Animal = {
 // //   cat: {
 // //     meow: () => string;
@@ -93,9 +95,10 @@ import "./style.css";
 // //   };
 // // };
 
-// type Cat = {
-//   meow: () => string;
-// };
+// Вариант - типизация для каждого объекта отдельно
+type Cat = {
+  meow: () => string;
+};
 
 // type Dog = {
 //   bark: () => string;
@@ -107,12 +110,12 @@ import "./style.css";
 
 // // Створення об'єктів типу Animal
 // let cat: Cat = {
-//   meow: () => "Meow! I am a cat"
+//   meow: () => 'Meow! I am a cat',
 // };
 
-// // let cat: Animal[AnimalIds.cat] = {
-// //   meow: () => "Meow! I am a cat",
-// // };
+// let cat: Animal[AnimalIds.cat] = {
+//   meow: () => 'Meow! I am a cat',
+// };
 
 // let dog: Dog = {
 //   bark: () => 'Woof! I am a dog',
@@ -122,8 +125,10 @@ import "./style.css";
 //   swim: () => undefined,
 // };
 
+// -------------------------------- Index Properties------------------------------
+
 // interface List {
-//   [key:string]: number | null
+//   [key: string]: number | null;
 // }
 
 // type Fruits = {
@@ -137,7 +142,7 @@ import "./style.css";
 //   banana: 15,
 //   oranges: 25,
 //   pinaple: 10,
-//   peach: null
+//   peach: null,
 // };
 
 // const electrinic: List = {
@@ -145,6 +150,10 @@ import "./style.css";
 //   tablets: 10,
 //   monitors: 23,
 // };
+
+// ------------------------------- Generics--------------------------------
+
+// -------------------------------Generics for Arrays----------------------------------
 
 // function getFirstElement<T>(array: T[]): T | undefined {
 //   return array[0];
@@ -173,7 +182,14 @@ import "./style.css";
 // console.log(getFirstElement(stringArray));
 // console.log(getFirstElement(objectArray));
 
+// -------------------------------Generics for Objects----------------------------------
+
 // function getProperty<ObjectType, K extends keyof ObjectType>(obj: ObjectType, key: K): ObjectType[K] {
+//   return obj[key];
+// }
+
+// Write with short names types
+// function getProperty<T, K extends keyof T>(obj: T, key: K): T[K] {
 //   return obj[key];
 // }
 
@@ -187,6 +203,10 @@ import "./style.css";
 // const name = getProperty(person, "name"); // Output: "John"
 // const age = getProperty(person, "age"); // Output: 30
 // const gender = getProperty(person, "gender"); // undefined
+
+// -------------------------------Дополнительные инструменты Generics--------------------------------
+
+// -------------------------------Partial----------------------------------
 
 // interface UserProfile {
 //   username: string;
@@ -206,6 +226,8 @@ import "./style.css";
 
 // const updatedProfile = updateProfile(originalProfile, { age: 29 });
 
+// -------------------------------Readonly----------------------------------
+
 // interface User {
 //   id: number;
 //   name: string;
@@ -213,11 +235,13 @@ import "./style.css";
 
 // const user: Readonly<User> = {
 //   id: 100,
-//   name: "Bob",
+//   name: 'Bob',
 // };
 
 // user.id = 201;
-// user.name = "John";
+// user.name = 'John';
+
+// -------------------------------Pick----------------------------------
 
 // Pick <T, K>
 
@@ -231,30 +255,38 @@ import "./style.css";
 
 // const fullEmployeeInfo: Employee = {
 //   id: 101,
-//   name: "John Doe",
-//   email: "john.doe@example.com",
-//   department: "Engineering",
-//   hireDate: new Date("2020-01-10"),
+//   name: 'John Doe',
+//   email: 'john.doe@example.com',
+//   department: 'Engineering',
+//   hireDate: new Date('2020-01-10'),
 // };
 
-// function displayInfo(fullEmployeeInfo: Employee): Pick<Employee, "name" | "email"> {
+// return с помощью Pick
+
+// function displayInfo(
+//   fullEmployeeInfo: Employee
+// ): Pick<Employee, 'name' | 'email'> {
 //   return {
 //     name: fullEmployeeInfo.name,
 //     email: fullEmployeeInfo.email,
 //   };
 // }
 
-// // interface BasicInfo {
-// //   name: string;
-// //   email: string;
-// // }
+// С обычными интерфейсами
 
-// // function displayInfo(fullEmployeeInfo: Employee): BasicInfo {
-// //   return {
-// //     name: fullEmployeeInfo.name,
-// //     email: fullEmployeeInfo.email,
-// //   };
-// // }
+// interface BasicInfo {
+//   name: string;
+//   email: string;
+// }
+
+// function displayInfo(fullEmployeeInfo: Employee): BasicInfo {
+//   return {
+//     name: fullEmployeeInfo.name,
+//     email: fullEmployeeInfo.email,
+//   };
+// }
+
+// -------------------------------Omit--------------------------------
 
 // interface Employee {
 //   id: number;
@@ -281,9 +313,12 @@ import "./style.css";
 //   };
 // }
 
-// interface List {
-//   [key:string]: number | null
-// }
+// -------------------------------Record---------------------------------
+
+// индексированные свойства
+interface List {
+  [key: string]: number | null;
+}
 
 // Record<string, number>;
 
@@ -314,11 +349,11 @@ import "./style.css";
 
 // type EmployeeBasicInfo = Omit<Employee, "hireDate">;
 
-interface User {
-  id: number;
-  name: string;
-  email: string;
-}
+// interface User {
+//   id: number;
+//   name: string;
+//   email: string;
+// }
 
 // async function fetchUser(): Promise<User> {
 //   try {
@@ -341,7 +376,6 @@ interface User {
 //     throw error;
 //   }
 // }
-
 
 // async function fetchUser<T>(url: string): Promise<T> {
 //   try {

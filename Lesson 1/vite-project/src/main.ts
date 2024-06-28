@@ -1,4 +1,6 @@
-import "./style.css";
+import './style.css';
+
+// -----------------------simple data types--------------------
 
 // let isDone: boolean = false;
 
@@ -13,6 +15,8 @@ import "./style.css";
 // The user profile object should have the following properties: username(string), age(number), and
 // isActive(boolean).The function should return a string summarizing the user's profile details
 
+// ------------------------Object----------------
+
 // type userProfile = {
 //   userName: string;
 //   age: number;
@@ -24,7 +28,7 @@ import "./style.css";
 // }
 
 // const user = {
-//   userName: "Bob",
+//   userName: 'Bob',
 //   age: 12,
 //   isActive: true,
 // };
@@ -35,6 +39,10 @@ import "./style.css";
 //   return `${name}`;
 // }
 
+// console.log(logName('Bob'));
+
+// ------------------------Array----------------
+
 // type User = {
 //   name: string;
 //   age: number;
@@ -43,7 +51,7 @@ import "./style.css";
 //   // return arr.reduce((acc, el) => acc + el, 0);
 // }
 
-// function calcTotal(arr: {name: string;age: number}[]) {
+// function calcTotal(arr: { name: string; age: number }[]) {
 //   // return arr.reduce((acc, el) => acc + el, 0);
 // }
 
@@ -55,69 +63,72 @@ import "./style.css";
 // console.log(calcTotal(numbersArray)); // Output: 100
 
 // const users = [
-//   { name: "bob", age: 12 },
-//   { name: "bob", age: 23 },
-//   { name: "bob", age: 34 },
+//   { name: 'bob', age: 12 },
+//   { name: 'bob', age: 23 },
+//   { name: 'bob', age: 34 },
 // ];
 
 // console.log(calcTotal(users)); // Output: 100
 
-// unknown
+// ------------------------unknown---------------
 
 // function safelyParseJson(jsonString: string) {
-//     try {
-//         const result: unknown = JSON.parse(jsonString);
-//         if (typeof result === "object" && result !== null) {
-//             return result;  // Type is verified as an object (non-null)
-//         }
-//     } catch (error) {
-//         console.error("Failed to parse JSON:", error);
+//   try {
+//     const result: unknown = JSON.parse(jsonString);
+//     if (typeof result === 'object' && result !== null) {
+//       return result; // Type is verified as an object (non-null)
 //     }
-//     return null;  // Return null if parsing fails or type is incorrect
+//   } catch (error) {
+//     console.error('Failed to parse JSON:', error);
+//   }
+//   return null; // Return null if parsing fails or type is incorrect
 // }
 
-// any
+// ------------------------any--------------
 
 // function logDetails(value: any) {
 //   console.log(`Value: ${value}, Type of value: ${typeof value}`);
 // }
 
+// ------------------------enum------------------
+
 // enum VehicleType {
-//     Car = "Audi",
-//     Truck = "Scania",
-//     Motorcycle = "Ducati"
+//   Car = 'Audi',
+//   Truck = 'Scania',
+//   Motorcycle = 'Ducati',
 // }
 
 // function getVehicleType(vehicle: VehicleType) {
-//     return `The vehicle type is: ${vehicle}.`;
+//   return `The vehicle type is: ${vehicle}.`;
 // }
 
 // // Example usage:
-// console.log(getVehicleType(VehicleType.Car));        // Output: "The vehicle type is: Audi."
+// console.log(getVehicleType(VehicleType.Car)); // Output: "The vehicle type is: Audi."
 // console.log(getVehicleType(VehicleType.Motorcycle)); // Output: "The vehicle type is: Ducati."
 
-// Union Types
+// ------------------------Union Types------------------
+
 // function formatInput(input: string | number) {
-//     if (typeof input === 'number') {
-//         return input.toFixed(2); // Formats the number to two decimal places
-//     } else {
-//         return input.toUpperCase(); // Converts the string to uppercase
-//     }
-// }
-
-// Literal
-
-// function lightShower(color: "green" | "yellow" | 'red') {
-//   if (color === "green") {
-//     console.log("go");
-//   } else if (color === "yellow") {
-//     console.log("ready");
-//   } else if (color === "red") {
-//     console.log("ready");
+//   if (typeof input === 'number') {
+//     return input.toFixed(2); // Formats the number to two decimal places
+//   } else {
+//     return input.toUpperCase(); // Converts the string to uppercase
 //   }
 // }
 
-// lightShower('black')
+// ------------------------Literal Types------------------
+
+// function lightShower(color: 'green' | 'yellow' | 'red') {
+//   if (color === 'green') {
+//     console.log('go');
+//   } else if (color === 'yellow') {
+//     console.log('ready');
+//   } else if (color === 'red') {
+//     console.log('ready');
+//   }
+// }
+
+// lightShower('black');
 
 // function logName(name: string): string {
 //   return `${name}`;
@@ -127,22 +138,24 @@ import "./style.css";
 //   console.log(`${name}`);
 // }
 
-// never
+// ------------------------never-------------------
 
 // function errorHandler(message: string): never {
 //   throw new Error(message);
 // }
 
-// errorHandler("Critical error occurred!");  // Throws an Error with the provided message
+// errorHandler('Critical error occurred!'); // Throws an Error with the provided message
 
-interface User {
-  name: string;
-  age: number;
-  lastName?: string;
-  sayHello(): string;
-  sayBye(): void;
-  showAge(userAge: number): string;
-}
+// ------------------------interface-----------------
+
+// interface User {
+//   name: string;
+//   age: number;
+//   lastName?: string;
+//   sayHello(): string;
+//   sayBye(): void;
+//   showAge(userAge: number): string;
+// }
 
 // type User = {
 //   name: string;
@@ -150,29 +163,29 @@ interface User {
 // };
 
 // const user = {
-//   name: "Bob",
+//   name: 'Bob',
 //   age: 12,
 //   sayHello() {
-//     return "Hello";
+//     return 'Hello';
 //   },
 //   sayBye() {
-//     console.log("Bye");
+//     console.log('Bye');
 //   },
 //   showAge(userAge: number) {
 //     return `My age is ${userAge}`;
 //   },
 // };
 
-const student : User = {
-  name: "Bob",
-  age: 12,
-  sayHello() {
-    return "Hello";
-  },
-  sayBye() {
-    console.log("Bye");
-  },
-  showAge(userAge) {
-    return `My age is ${userAge}`;
-  },
-};
+// const student: User = {
+//   name: 'Bob',
+//   age: 12,
+//   sayHello() {
+//     return 'Hello';
+//   },
+//   sayBye() {
+//     console.log('Bye');
+//   },
+//   showAge(userAge) {
+//     return `My age is ${userAge}`;
+//   },
+// };
