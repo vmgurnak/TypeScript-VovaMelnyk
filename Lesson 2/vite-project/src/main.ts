@@ -316,10 +316,11 @@ type Cat = {
 // -------------------------------Record---------------------------------
 
 // индексированные свойства
-interface List {
-  [key: string]: number | null;
-}
+// interface List {
+//   [key: string]: number | null;
+// }
 
+// Record;
 // Record<string, number>;
 
 // function recordTemperatures(temps: number[]): Record<string, number> {
@@ -339,6 +340,8 @@ interface List {
 
 // [{ 'day1': 22 }, { 'day2': 24 }]
 
+// -------------------------------Переиспользование интерфесов--------------------------------
+
 // interface Employee {
 //   id: number;
 //   name: string;
@@ -347,7 +350,9 @@ interface List {
 //   hireDate: Date; // hide info
 // }
 
-// type EmployeeBasicInfo = Omit<Employee, "hireDate">;
+// type EmployeeBasicInfo = Omit<Employee, 'hireDate'>;
+
+// -------------------------------Async Functions------------------------------
 
 // interface User {
 //   id: number;
@@ -357,14 +362,16 @@ interface List {
 
 // async function fetchUser(): Promise<User> {
 //   try {
-//     const response = await fetch("https://api.user.com");
+//     const response = await fetch('https://api.user.com');
 //     const user = await response.json();
 //     return user;
 //   } catch (error) {
-//     console.log("fetch error");
+//     console.log('fetch error');
 //     throw error;
 //   }
 // }
+
+// Вариант без привязки к интерфейсу
 
 // async function fetchUser<T>(url: string): Promise<T> {
 //   try {
@@ -372,10 +379,12 @@ interface List {
 //     const user: T = await response.json();
 //     return user;
 //   } catch (error) {
-//     console.log("fetch error");
+//     console.log('fetch error');
 //     throw error;
 //   }
 // }
+
+// Вариант без привязки к интерфейсу с axios
 
 // async function fetchUser<T>(url: string): Promise<T> {
 //   try {

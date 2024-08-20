@@ -130,9 +130,15 @@ import './style.css';
 
 // lightShower('black');
 
+// ------------------------Типи для методів та функцій------------------
+
+// ------------------------Return Type-------------------
+
 // function logName(name: string): string {
 //   return `${name}`;
 // }
+
+// ------------------------Void-------------------
 
 // function logName(name: string): void {
 //   console.log(`${name}`);
